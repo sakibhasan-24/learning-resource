@@ -1,0 +1,30 @@
+html {
+  font-size: 62.5%;
+}
+.nav-contents {
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 2rem 4rem;
+  margin: 3rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn {
+  background-color: #fb3030;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.9s;
+}
+.sort-by-view:hover {
+  filter: brightness(0.9);
+}
+.sort-by-view:active {
+  /* background-color: aqua; */
+  transform: scale(0.9);
+}
