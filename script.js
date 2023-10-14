@@ -20,11 +20,11 @@ const categoriesContainer = document.getElementById("categories-container");
 const newsContainer = document.getElementById("news-container");
 function getHeaderCategory(categories) {
   categories.forEach((data) => {
-    console.log(data);
+    // console.log(data);
     const allCategory = data.category;
     const h3 = document.createElement("h3");
 
-    h3.innerText = `${allCategory} `;
+    h3.innerHTML = `<span onclick="showCategories('${data.category_id}')"> ${allCategory}</span>`;
     categoriesContainer.appendChild(h3);
   });
 }
