@@ -37,7 +37,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rem;
+  gap: 5rem;
   font-size: 2rem;
 }
 .categories-container h3 {
@@ -52,4 +52,51 @@ hr {
 }
 .active {
   background-color: navy;
+}
+
+main {
+  max-width: 1200px;
+  margin: 4rem auto;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.news {
+  /* width: 20rem; */
+
+  border-radius: 12px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+.image-container {
+  position: relative;
+}
+.minutes {
+  position: absolute;
+  top: 80%;
+  left: 70%;
+  color: #eee;
+}
+.image-container img {
+  width: 100%;
+  border-radius: 20px;
+}
+.info {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.icon img {
+  margin-top: 2rem;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+}
+.text {
+  /* display: flex;
+  flex-direction: column; */
 }
