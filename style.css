@@ -28,3 +28,28 @@ html {
   /* background-color: aqua; */
   transform: scale(0.9);
 }
+hr {
+  margin: 2rem 8rem;
+  font-weight: bolder;
+}
+
+.categories-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  font-size: 2rem;
+}
+.categories-container h3 {
+  background-color: rgb(18, 77, 129);
+  color: #fff;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.categories-container h3:hover {
+  background-color: rgb(18, 77, 129, 0.9);
+}
+.active {
+  background-color: navy;
+}
