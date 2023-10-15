@@ -11,7 +11,7 @@ Example: - https://openapi.programming-hero.com/api/videos/category/1000
 const categoriesContainer = document.getElementById("categories-container");
 const newsContainer = document.getElementById("news-container");
 const noContent = document.getElementById("no-content");
-
+const sortByView = document.getElementById("sort-by-view");
 // laoding header categories
 
 const headerUrl = ` https://openapi.programming-hero.com/api/videos/categories
@@ -29,6 +29,10 @@ function getHeaderCategory(categories) {
     categoriesContainer.appendChild(h3);
   });
 }
+
+let sortDataInitial = false;
+
+// categories wise
 const showCategories = (id) => {
   newsContainer.style.opacity = "0";
   newsContainer.textContent = "";
@@ -39,26 +43,43 @@ const showCategories = (id) => {
         return (noContent.style.display = "block");
       }
       noContent.style.display = "none";
-      displayData(data.data);
+      displayData(data.data, sortDataInitial);
     });
 };
 // loading news all by default
 fetch(`https://openapi.programming-hero.com/api/videos/category/1000`)
   .then((res) => res.json())
-  .then((data) => displayData(data.data));
+  .then((data) => displayData(data.data, sortDataInitial));
 
-function displayData(newsData) {
+function displayData(newsData, dataSorted) {
+  // console.log(newsData[0].others.views);
+
+  // const allViews = [];
+
+  // newsData.forEach((news) => {
+  //   allViews.push(news.others.views);
+  // });
+
+  dataSorted = displaySortedNews(sortDataInitial);
+  if (dataSorted) {
+    newsData.sort(
+      (a, b) =>
+        Number(b.others.views.substring(0, 3)) -
+        Number(a.others.views.substring(0, 3))
+    );
+  }
+
+  // console.log(newsData);
+
   newsData.forEach((news) => {
-    // console.log(news);
+    sortDataInitial = false;
+    // newsContainer.innerHTML = "";
     const newsDiv = document.createElement("div");
     newsContainer.style.opacity = "1";
     const timeRemaining = convertSecond(news.others.posted_date);
-    console.log(timeRemaining);
     const handleTime =
-      timeRemaining === "0 hrs 0 minutes " ? "upcoming" : timeRemaining;
-    // console.log(timeRemaining);
-    newsDiv.innerHTML = `
-    
+      timeRemaining === "0 hrs 0 minutes " ? "" : timeRemaining;
+    newsDiv.innerHTML = `  
     <div class="news">
           <div class="image-container">
             <img
@@ -105,4 +126,17 @@ function convertSecond(second) {
   )} minutes `;
   // console.log(message);
   return message;
+}
+
+sortByView.addEventListener("click", function () {
+  displaySortedNews((sortDataInitial = true));
+  // data will show
+  // manual approach
+  const id = [1000, 1001, 1002];
+  for (let i = 0; i < id.length; i++) {
+    showCategories(id[i]);
+  }
+});
+function displaySortedNews(isSortedNews) {
+  return (isSortedNews = sortDataInitial);
 }
