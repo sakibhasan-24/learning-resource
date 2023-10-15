@@ -49,9 +49,14 @@ fetch(`https://openapi.programming-hero.com/api/videos/category/1000`)
 
 function displayData(newsData) {
   newsData.forEach((news) => {
-    console.log(news);
+    // console.log(news);
     const newsDiv = document.createElement("div");
     newsContainer.style.opacity = "1";
+    const timeRemaining = convertSecond(news.others.posted_date);
+    console.log(timeRemaining);
+    const handleTime =
+      timeRemaining === "0 hrs 0 minutes " ? "upcoming" : timeRemaining;
+    // console.log(timeRemaining);
     newsDiv.innerHTML = `
     
     <div class="news">
@@ -60,7 +65,7 @@ function displayData(newsData) {
               src="${news.thumbnail}"
               alt=""
             />
-            <p class="minutes">${news.others.posted_date}</p>
+            <p class="minutes">${handleTime}</p>
           </div>
           <div class="info">
             <div class="icon">
@@ -88,3 +93,16 @@ function displayData(newsData) {
 }
 
 // loading by categories
+
+// function seconds to minutes
+
+function convertSecond(second) {
+  const hours = second / 3600;
+  // console.log(hours)
+  const remainingSecond = second % 3600;
+  const message = `${Math.floor(hours)} hrs ${Math.floor(
+    remainingSecond / 60
+  )} minutes `;
+  // console.log(message);
+  return message;
+}
