@@ -188,3 +188,19 @@ main {
     height: 100px;
   }
 }
+
+@media screen and (max-width: 770px) and (min-width: 660px) {
+  main {
+    max-width: 900px;
+    margin: 4rem auto;
+  }
+  .news-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .image-container {
+    width: 100%;
+  }
+  .image-container img {
+    width: 100%;
+  }
+}
