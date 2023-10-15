@@ -7,6 +7,15 @@ main {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+.btn {
+  background-color: orangered;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  transform: translateX(100rem);
+}
 main h3 {
   text-align: center;
   font-weight: bolder;
@@ -40,4 +49,42 @@ main h3 {
 .blog span {
   color: orangered;
   font-weight: bolder;
+}
+@media screen and (max-width: 660px) {
+  main {
+    width: 100%;
+  }
+  .btn {
+    transform: translateX(0);
+  }
+  .blogs-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 770px) and (min-width: 661px) {
+  main {
+    width: 100%;
+    margin: 4rem auto;
+  }
+  .btn {
+    transform: translateX(0);
+  }
+  .blogs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 1250px) and (min-width: 769px) {
+  main {
+    width: 100%;
+    margin: 4rem auto;
+  }
+  .btn {
+    transform: translateX(1rem);
+  }
+  .blogs-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
