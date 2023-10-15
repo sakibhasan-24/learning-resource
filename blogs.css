@@ -1,0 +1,43 @@
+html {
+  font-size: 62.5%;
+}
+main {
+  width: 1200px;
+  margin: 5rem auto;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+main h3 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 4rem;
+  color: orangered;
+}
+.blogs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  cursor: pointer;
+}
+.blog {
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.7);
+  padding: 2rem 3rem;
+  width: 80%;
+  border-radius: 12px;
+}
+.blog h3 {
+  font-size: 3.5rem;
+  color: rgb(126, 40, 9);
+}
+.blog p {
+  font-size: 1.6rem;
+  letter-spacing: 0.4px;
+}
+.blog p::first-letter {
+  font-size: 4rem;
+}
+.blog span {
+  color: orangered;
+  font-weight: bolder;
+}

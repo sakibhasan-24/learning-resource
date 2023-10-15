@@ -38,7 +38,6 @@ const showCategories = (id) => {
       if (data.data.length === 0) {
         return (noContent.style.display = "block");
       }
-
       noContent.style.display = "none";
       displayData(data.data);
     });

@@ -1,6 +1,7 @@
 html {
   font-size: 62.5%;
 }
+
 .nav-contents {
   background-color: #eee;
   border-radius: 10px;
@@ -21,6 +22,10 @@ html {
   color: #fff;
   transition: all 0.9s;
 }
+a {
+  text-decoration: none;
+}
+
 .sort-by-view:hover {
   filter: brightness(0.9);
 }
