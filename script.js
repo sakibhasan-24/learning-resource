@@ -8,6 +8,10 @@ Example: - https://openapi.programming-hero.com/api/videos/category/1000
 
 */
 
+const categoriesContainer = document.getElementById("categories-container");
+const newsContainer = document.getElementById("news-container");
+const noContent = document.getElementById("no-content");
+
 // laoding header categories
 
 const headerUrl = ` https://openapi.programming-hero.com/api/videos/categories
@@ -15,10 +19,6 @@ const headerUrl = ` https://openapi.programming-hero.com/api/videos/categories
 fetch(headerUrl)
   .then((res) => res.json())
   .then((data) => getHeaderCategory(data.data));
-
-const categoriesContainer = document.getElementById("categories-container");
-const newsContainer = document.getElementById("news-container");
-const noContent = document.getElementById("no-content");
 function getHeaderCategory(categories) {
   categories.forEach((data) => {
     // console.log(data);
@@ -30,6 +30,7 @@ function getHeaderCategory(categories) {
   });
 }
 const showCategories = (id) => {
+  newsContainer.style.opacity = "0";
   newsContainer.textContent = "";
   fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
     .then((res) => res.json())
@@ -37,6 +38,7 @@ const showCategories = (id) => {
       if (data.data.length === 0) {
         return (noContent.style.display = "block");
       }
+
       noContent.style.display = "none";
       displayData(data.data);
     });
@@ -50,7 +52,7 @@ function displayData(newsData) {
   newsData.forEach((news) => {
     console.log(news);
     const newsDiv = document.createElement("div");
-
+    newsContainer.style.opacity = "1";
     newsDiv.innerHTML = `
     
     <div class="news">
