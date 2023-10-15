@@ -18,6 +18,7 @@ fetch(headerUrl)
 
 const categoriesContainer = document.getElementById("categories-container");
 const newsContainer = document.getElementById("news-container");
+const noContent = document.getElementById("no-content");
 function getHeaderCategory(categories) {
   categories.forEach((data) => {
     // console.log(data);
@@ -28,17 +29,28 @@ function getHeaderCategory(categories) {
     categoriesContainer.appendChild(h3);
   });
 }
-const showCategories = (data) => {
-  console.log(data);
+const showCategories = (id) => {
+  newsContainer.textContent = "";
+  fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.data.length === 0) {
+        return (noContent.style.display = "block");
+      }
+      noContent.style.display = "none";
+      displayData(data.data);
+    });
 };
 // loading news all by default
 fetch(`https://openapi.programming-hero.com/api/videos/category/1000`)
   .then((res) => res.json())
   .then((data) => displayData(data.data));
+
 function displayData(newsData) {
   newsData.forEach((news) => {
     console.log(news);
     const newsDiv = document.createElement("div");
+
     newsDiv.innerHTML = `
     
     <div class="news">
@@ -57,8 +69,14 @@ function displayData(newsData) {
               <h2 class="news-title">
                ${news.title}
               </h2>
-              <p>${news.authors[0].profile_name} <span class="verfiy">icon</span></p>
-              <p>${news.others.views}</p>
+              <p class="author-name">${
+                news.authors[0].profile_name
+              } <span class="verfiy">${
+      news.authors[0].verified
+        ? "<img class='verify-icon' src='https://seeklogo.com/images/S/steam-deck-compatibility-verified-icon-logo-22967717C1-seeklogo.com.png' alt='icon'/>"
+        : ""
+    }</span></p>
+              <p class='views'>${news.others.views}</p>
             </div>
           </div>
         </div>
